@@ -40,3 +40,20 @@ function findElement(arr, func) {
       }
   }
 }
+
+
+//Flatten a nested array. You must account for varying levels of nesting.
+
+function steamrollArray(arr) {
+  var flattened = [];
+  arr.forEach(function(item) {
+  	  if (Array.isArray(item) === true) {
+          flattened = flattened.concat(steamrollArray(item));
+      } else {
+      	  flattened.push(item);
+      }
+  });
+  return flattened;
+}
+
+steamrollArray([1, [2], [3, [[4]]]]);

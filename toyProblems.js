@@ -40,3 +40,32 @@ function findElement(arr, func) {
       }
   }
 }
+
+//Drop the elements of an array (first argument), starting from the front, until the predicate (second argument) returns true.
+
+//The second argument, func, is a function you'll use to test the first elements of the array to decide if you should drop it or not.
+
+//Return the rest of the array, otherwise return an empty array.
+
+function dropElements(arr, func) {
+	for (var i = 0, length = arr.length; i < length; i++) {
+        if (func(arr[0]) === false) {
+            arr.shift();
+        } else {
+        	return arr;
+        }
+    }
+    return [];
+}
+
+
+//Check if the predicate (second argument) is truthy on all elements of a collection (first argument).
+
+function truthCheck(c, pre) {
+    for (var i = 0; i < c.length; i++) {
+        if (c[i].hasOwnProperty(pre) === false || (!c[i][pre])) {
+    	    return false;
+    	}
+    }
+    return true;
+}

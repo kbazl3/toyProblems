@@ -101,3 +101,28 @@ function truthCheck(c, pre) {
     }
     return true;
 }
+
+
+
+
+//Create a function that sums two arguments together. If only one argument is provided, then return a function that expects one argument and returns the sum.
+
+function addTogether() {
+    for (var i = 0; i < arguments.length; i++) {
+        if (typeof arguments[i] !== 'number') {
+            return undefined;
+        }
+    }
+	if (arguments.length === 1) {
+        var ogArg = arguments[0];
+        return function(num) {
+            if (typeof num !== "number") {
+                return undefined;
+            } else {
+                return num + ogArg;
+            }
+        };
+    } else {
+        return arguments[0] + arguments[1];
+    }
+}

@@ -126,3 +126,26 @@ function addTogether() {
         return arguments[0] + arguments[1];
     }
 }
+
+
+//Sum all the prime numbers up to and including the provided number.
+
+function sumPrimes(num) {
+    var primes = [2];
+    for (var i = 2; i <= num; i++) {
+        for (var j = 2; j < i; j++) {
+            var flag = true;
+        	if (i % j === 0) {
+                flag = false;
+            	break;
+            }
+        }
+        if (flag === true) {
+            primes.push(i);
+        }
+    }
+    var summy = function(a,b) {
+        return a + b;
+    };
+    return primes.reduce(summy);
+}

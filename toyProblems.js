@@ -67,6 +67,7 @@ function sumFibs(num) {
             odds.push(fibs[i] + fibs[i - 1]);
         }
     }
+
     function getSum(total, num) {
         return total + num;
     }
@@ -80,11 +81,11 @@ function sumFibs(num) {
 //Return the rest of the array, otherwise return an empty array.
 
 function dropElements(arr, func) {
-	for (var i = 0, length = arr.length; i < length; i++) {
+    for (var i = 0, length = arr.length; i < length; i++) {
         if (func(arr[0]) === false) {
             arr.shift();
         } else {
-        	return arr;
+            return arr;
         }
     }
     return [];
@@ -96,8 +97,8 @@ function dropElements(arr, func) {
 function truthCheck(c, pre) {
     for (var i = 0; i < c.length; i++) {
         if (c[i].hasOwnProperty(pre) === false || (!c[i][pre])) {
-    	    return false;
-    	}
+            return false;
+        }
     }
     return true;
 }
@@ -113,7 +114,7 @@ function addTogether() {
             return undefined;
         }
     }
-	if (arguments.length === 1) {
+    if (arguments.length === 1) {
         var ogArg = arguments[0];
         return function(num) {
             if (typeof num !== "number") {
@@ -135,17 +136,42 @@ function sumPrimes(num) {
     for (var i = 2; i <= num; i++) {
         for (var j = 2; j < i; j++) {
             var flag = true;
-        	if (i % j === 0) {
+            if (i % j === 0) {
                 flag = false;
-            	break;
+                break;
             }
         }
         if (flag === true) {
             primes.push(i);
         }
     }
-    var summy = function(a,b) {
+    var summy = function(a, b) {
         return a + b;
     };
     return primes.reduce(summy);
+}
+
+
+//Find the smallest common multiple of the provided parameters that can be evenly divided by both, as well as by all sequential numbers in the range between these parameters.
+
+//The range will be an array of two numbers that will not necessarily be in numerical order.
+
+function smallestCommons(arr) {
+    var nums = [];
+    var answer = 0;
+    for (var i = arr.sort()[0]; i <= arr.sort()[1]; i++) {
+        nums.push(i);
+    }
+    for (var possibleDenom = 1; possibleDenom < 7000000; possibleDenom++) {
+        var flag = true;
+        nums.forEach(function(number) {
+            if (possibleDenom % number !== 0) {
+                flag = false;
+            }
+        })
+        if (flag === true) {
+            console.log(possibleDenom);
+            return possibleDenom;
+        }
+    }
 }
